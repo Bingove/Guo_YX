@@ -1,0 +1,47 @@
+server:
+  port: 8068
+  tomcat:
+    max-threads: 0
+    uri-encoding: utf-8
+    basedir: target/tomcat
+logging:
+  level:
+    com.xhs.center.dao.master: INFO
+    com.xhs.center.dao.a: INFO
+  #file: /xhemss/my.log
+ # pattern:
+  #  file: my.log
+spring:
+  mvc:
+      favicon:
+        enabled: false
+  thymeleaf:
+        check-template-location: true
+        check-template: true
+        enabled: true
+        cache: false #生成环境开启缓存
+        prefix: classpath:/templates/  #前缀
+        suffix: .html
+        mode: LEGACYHTML5  # 忽略 限制   需要在 pom 文件 添加依赖
+  resources:
+      static-locations: classpath:/static/,file:D:/center_upload_dir/   #配置静态资源目录，以逗号分隔多个目录
+  datasource:
+      druid:
+        url: jdbc:mysql://47.102.143.23:3306/ShouShen?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+        max-active: 30
+        max-wait: 10000
+        validation-query-timeout: 60
+        initial-size: 5
+  http:
+    encoding:
+      charset: utf-8
+      enabled: true
+      force: true
+mybatis:  # 自动配置
+  mapper-locations: classpath:mapper/master/*.xml # mapper 文件所在位置   所有的mapper映射文件
+  type-aliases-package: com.xhs.center  # 映射类   # 定义所有操作类的别名所在包
+  configuration: #解决当mybatis返回类型为map时，因字段值为NULL而不返回字段名称的问题
+      call-setters-on-nulls: true

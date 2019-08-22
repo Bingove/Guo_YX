@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>注册页面</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<!-- load css -->
+	<link rel="stylesheet" type="text/css" href="media/layui/css/layui.css"
+		  media="all">
+	<link rel="stylesheet" type="text/css" href="media/css/login.css"
+		  media="all">
+	<link rel="stylesheet" type="text/css" href="media/css/verify.css">
+	<script type="text/javascript" src="media/js/jquery.min.js"></script>
+
+<style type="text/css">
+div {
+
+}
+
+.zq {
+	color: green;
+	font-size: 15px;
+}
+
+.cw {
+	color: red;
+	font-size: 15px;
+}
+</style>
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+//使用Ajax校验用户名是否存在
+function checkName(obj) {
+	$.post("usernamecheck.do","username="+obj.value,function(arr){
+		console.log(arr);
+
+		if(arr.code==1){
+			//成功
+			$("#lbmsg1").css("color","green").html(arr.msg);
+			
+		}else{
+			$("#lbmsg1").css("color","red").html(arr.msg);
+		}
+		
+	});
+}
+//2次密码一致性校验
+function checkpwd(obj) {
+	var p2=obj.value;//第二次的密码
+	var p1=$("#pd1").val();//第一次的密码
+	console.log(p1)
+	console.log(p2)
+	if(p2==p1){//一致
+		$("#lbmsg2").removeClass("cw").addClass("zq").html("OK");
+	}else{//不一致
+		$("#lbmsg2").removeClass("zq").addClass("cw").html("两次密码不一致");
+	}
+}
+
+//实现注册
+function register() {
+	$.post("useradd.do","username="+$("#un").val()+"&password="+$("#pd1").val(),function(arr){
+
+		if(arr.code==1){
+			//成功
+			alert(arr.msg);
+			location.href="/";
+		}else{
+			alert(obj.msg);
+		}
+	})
+}
+
+</script>
+</head>
+<body class="layui-bg-black">
+<div class="layui-canvs"></div>
+<div class="layui-layout layui-layout-login">
+
+		<h1>
+			<strong>赶快加入我们吧</strong> <em>A trip for love</em>
+		</h1>
+		<div class="layui-user-icon larry-login">
+			<input type="text" placeholder="账号" class="login_txtbx" name="username" id="un" onchange="checkName(this)"
+				   value="admin" />
+		</div>
+	<label
+			id="lbmsg1">&nbsp </label>
+		<div class="layui-pwd-icon larry-login">
+			<input type="password" placeholder="请输入密码" id="pd1"
+				   class="login_txtbx" />
+		</div>
+	<label
+			>&nbsp </label>
+		<div class="layui-pwd-icon larry-login">
+			<input type="password" placeholder="请再次输入密码" onchange="checkpwd(this)" id="pd2"
+				   class="login_txtbx" />
+		</div>
+	<p id="lbmsg2"> &nbsp</p>
+		<input type="hidden" name="ip" id="ip1"> <input type="hidden"
+														name="city" id="cy1">
+		<div id="mpanel3" style="margin-top: 20px">
+		</div>
+
+		<!--<button type="button" id="check-btn2" class="verify-btn">确定</button>-->
+		<div class="layui-submit larry-login">
+			<!--<input type="" id="btn1" value="立即注册" disabled="disabled"
+				   class="submit_btn" />-->
+			<button onclick="register()">注册</button>
+		</div>
+
+		<div class="layui-login-text">
+			<p><a href="login.html">Open for a wonderful journey</a></p>
+		</div>
+
+	<div class="layui-login-text">
+		<p>2018/07/11 小组项目--研究学习使用</p>
+	</div>
+</div>
+
+	<!--<div style="width: 50%;height: 50%;">
+		<h1>注册</h1>
+		<input placeholder="请输入用户名" id="un" onchange="checkName(this)"><label
+			id="lbmsg1"></label><br /> <input type="password" placeholder="请输入密码"
+			id="pd1"><br /> <input type="password" placeholder="请再次输入密码"
+			onchange="checkpwd(this)" id="pd2"><label id="lbmsg2"></label><br />
+			<input type="radio" name="gender" value="男" checked="checked">男
+			<input type="radio" name="gender" value="女">女<br />
+		<button onclick="register()">注册</button>
+		<p>
+			亲，已有账号,<a href="stulogin.html">点击登录</a>
+		</p>
+	</div>-->
+	<script type="text/javascript" src="media/layui/layui.js"></script>
+	<script type="text/javascript" src="media/js/login.js"></script>
+	<!--互动的粒子动画特效插件  -->
+	<script type="text/javascript" src="media/js/jparticle.jquery.js"></script>
+	<script type="text/javascript" src="media/js/verify.min.js"></script>
+
+	<script type="text/javascript">
+        $(function() {
+            //互动的粒子动画特效插件
+            $(".layui-canvs").jParticle({
+                background: "#141414",
+                color: "#E6E6E6"
+            });
+            $('#mpanel3').codeVerify({
+                type : 2,
+                figure : 100,	//位数，仅在type=2时生效
+                arith : 0,	//算法，支持加减乘，不填为随机，仅在type=2时生效
+                width : '200px',
+                height : '50px',
+                fontSize : '30px',
+                btnId : 'check-btn2',
+                ready : function() {
+                },
+                success : function() {
+                    $("#btn1").attr("disabled", false);
+                },
+                error : function() {
+                    alert('验证码不匹配！');
+                }
+            });
+
+
+        });
+	</script>
+</body>
+</html>

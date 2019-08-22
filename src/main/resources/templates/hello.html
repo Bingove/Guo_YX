@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<!--/*@thymesVar id="name" type="java.lang.String"*/-->
+<!--<p th:text="'Hello！, ' + ${name} + '!'">3333</p>-->
+</body>
+<script src="/libs/jquery/jquery.min.js"></script>
+<script>
+    $(function () {
+        console.log("ww");
+        initData();
+    });
+
+
+        function initData() {
+            var data = {
+                stationId: "1811037lF_FFAke",
+                pageCount: 4,
+                currentPage: 1,
+                json:{
+                    name:"zhnasn",
+                    age:30
+                }
+            };
+            $.ajax({
+                type: 'POST',
+                url: "http://localhost:8067/monitor/list",
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (res) {
+                    console.log("data",res);
+                }
+            })
+
+    }
+</script>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhs.center.dao.master.TUserMapper">
+    <resultMap id="BaseResultMap" type="com.xhs.center.model.master.TUser">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="role" jdbcType="INTEGER" property="role"/>
+        <result column="flag" jdbcType="INTEGER" property="flag"/>
+    </resultMap>
+    <update id="delete_1" parameterType="java.lang.Integer">
+    update t_user set flag=2 where id=#{id}
+  </update>
+    <update id="update" parameterType="com.xhs.center.model.master.TUser">
+        update t_user set password=#{password} where id=#{id}
+    </update>
+    <select id="queryByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from t_user where username=#{username} and role=1
+</select>
+    <insert id="save" parameterType="com.xhs.center.model.master.TUser">
+        insert into t_user(username,password,role,flag) values(#{username},#{password},1,1)
+    </insert>
+    <select id="queryByNOAndP" parameterType="java.util.Map" resultMap="BaseResultMap">
+        select * from t_user where username=#{username} and role=#{role}
+    </select>
+</mapper>
