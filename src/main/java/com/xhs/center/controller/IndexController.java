@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @projectName Monitor_Management
- * @Author 常冬军
+ * @Author Bingove
  * @Date 2019/4/10 0010上午 10:35
  * @title: IndexController
  * @ToDo

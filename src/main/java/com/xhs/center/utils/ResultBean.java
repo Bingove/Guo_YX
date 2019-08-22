@@ -17,7 +17,7 @@ package com.xhs.center.utils;
 /**
  * @projectName Monitor_Management
  * @packageName com.xhs.center.utils
- * @Author 常冬军
+ * @Author Bingove
  * @Date 2019/08/22 16:56
  * @title ResultBean
  * @ToDo

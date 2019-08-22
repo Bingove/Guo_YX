@@ -1,3 +1,4 @@
+/*
 package com.xhs.center.config;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
@@ -16,20 +17,24 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
+*/
 /**
  * Mysql 主数据源
  *
  * @author cuixw
  * @date 12/11/2017
- */
+ *//*
+
 //@Configuration
 //@MapperScan(basePackages = MasterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
 public class MasterDataSourceConfig {
     private Logger logger = LoggerFactory.getLogger(MasterDataSourceConfig.class);
 
-    /**
+    */
+/**
      * 精确到 master 目录，以便跟其他数据源隔离
-     */
+     *//*
+
     static final String PACKAGE = "com.xhs.center.dao.master";
     static final String MAPPER_LOCATION = "classpath:mapper/master/*.xml";
 
@@ -58,4 +63,4 @@ public class MasterDataSourceConfig {
                 .getResources(MasterDataSourceConfig.MAPPER_LOCATION));
         return sessionFactory.getObject();
     }
-}
+}*/

@@ -37,7 +37,7 @@ import javax.sql.DataSource;
 /**
  * @projectName Monitor_Management
  * @packageName com.xhs.center.config
- * @Author 常冬军
+ * @Author Bingove
  * @Date 2019/08/22 11:43
  * @title SecondDatasourceConfig
  * @ToDo

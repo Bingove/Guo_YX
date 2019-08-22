@@ -3,7 +3,7 @@ package com.xhs.center.utils;
 import java.util.Random;
 
 /**
- * @Author 常冬军
+ * @Author Bingove
  * @Date 2018/11/5 0005下午 18:29
  */
 public class RandomNumber {

@@ -19,7 +19,7 @@ import com.xhs.center.model.master.TUser;
 /**
  * @projectName Monitor_Management
  * @packageName com.xhs.center.service.master
- * @Author 常冬军
+ * @Author Bingove
  * @Date 2019/08/22 16:53
  * @title TUserService
  * @ToDo
